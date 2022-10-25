@@ -4,6 +4,7 @@ SoftDev
 k09-- seeing how static html files work in flask
 2022-10-07
 time spent: 1.5 hrs
+Credits to WillyVee's StuyCS Ipsum generator 
 """
 
 # DEMO 
