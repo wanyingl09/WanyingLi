@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>max-flow min-cut theorem</h1>
+    <p>presented by Wanying Li and Emily Ortiz</p>
+
+    <h2>Theorem</h2>
+    <p>The maximum value of an s-t flow is equal to the minimum capacity over all s-t cuts.</p>
+    <p>Basically: <b>MAX FLOW = MIN CUT</b></p>
+    <p>This might not make sense now, but don't worry, we will get into it.</p>
+
+    <h2>Terms</h2>
+    <ul>
+        <li>Network - a system of nodes/vertices connected by edges</li>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/JkX4hfm/img0.png" alt="img0" border="0"></a>
+        <li>Source (s) - all units flow from this Vertex</li>
+        <li>Sink (t) - all units flow to this vertex</li>
+        <a href="https://ibb.co/ZgPtBmK"><img src="https://i.ibb.co/qgfXN59/img1.png" alt="img1" border="0"></a>
+        <li>Capacity (of an edge) - maximum amount of units that can fit/move along the edge</li>
+        <ul>
+            <li>You can think about it as the maximum number of cars that can fit on a street!</li>
+        </ul>
+        <a href="https://ibb.co/r0sshT4"><img src="https://i.ibb.co/bmJJVqz/img2.png" alt="img2" border="0"></a>
+        <li>Flow (of an edge) - how many units are actually moving along the edge</li>
+        <ul>
+            <li>0 <= flow <=capacity</li>
+        </ul>
+        <li>Conservation of Flow - incoming flow = outgoing flow at each vertex</li>
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/wg9STWK/img3.png" alt="img3" border="0"></a>
+    </ul>
+
+    <h2>Let's try finding the maximum flow of this network!</h2>
+    <a href="https://ibb.co/88mHPwg"><img src="https://i.ibb.co/w6dfpqh/img4.png" alt="img4" border="0"></a>
+    <p>Let's start by putting the maximum number of units along this edge. Vertex labels have been added for clarity.
+    </p>
+    <a href="https://ibb.co/B6JL7KD"><img src="https://i.ibb.co/HPy7Mpv/img5.png" alt="img5" border="0"></a>
+    <p>3 units flow into vertex a, so 3 units must flow out of it. You can put those 3 units along any of the different
+        edges coming out of vertex a, but we will keep the units together and move them along this edge.</p>
+    <a href="https://ibb.co/NS28g3S"><img src="https://i.ibb.co/DpfxPbp/img6.png" alt="img6" border="0"></a>
+    <p>3 units flow into vertex c, so 3 units must flow out of it. One of the edges has a capacity of 2, so we will can
+        only put 2 units along that edge. The other unit will go down the edge with a capacity of 4.</p>
+    <a href="https://ibb.co/PQYNyx8"><img src="https://i.ibb.co/9tvN0nj/img7.png" alt="img7" border="0"></a>
+    <p>We don't have to worry about the 2 units that made it to the sink (t). The 1 unit that flowed into vertex d flows
+        out this edge. Now, our network has a flow of 3, since 3 units came in from the source (s), and allt 3 units
+        went to the sink (t).</p>
+    <a href="https://ibb.co/Bg8MFjR"><img src="https://i.ibb.co/P5BH048/img8.png" alt="img8" border="0"></a>
+    <p>So far, we have only filled one of the edges coming out of the source (s). Let's put the maximum number of units
+        along the second edge.</p>
+    <a href="https://ibb.co/ssycHVv"><img src="https://i.ibb.co/qmkh5rM/img9.png" alt="img9" border="0"></a>
+    <p>9 units flow into vertex b, so 9 units flow out of vertex b.</p>
+    <a href="https://ibb.co/nzjj4Hv"><img src="https://i.ibb.co/pJddNt8/img10.png" alt="img10" border="0"></a>
+    <p>🚨 Uh oh, the flow (9) is larger than the capacity of the edge (3). This can not happen! </p>
+    <a href="https://ibb.co/NYqcH2Z"><img src="https://i.ibb.co/7yDs6t2/img11.png" alt="img11" border="0"></a>
+    <p>Let's fix this. There is only one edge flowing out of vertex b, and it has a capacity of 3 units. Let's fill that
+        edge to the max. If 3 units flow out of vertex b, then 3 units must flow into vertex b (Conservation of Flow).
+    </p>
+    <a href="https://ibb.co/YLS29jc"><img src="https://i.ibb.co/2krq2Kv/img12.png" alt="img12" border="0"></a>
+    <p>Okay, so 3 units are flowing from b to d, and 1 unit is flowing from c to d. Vertex d has 4 units flowing into
+        it, so there would be 4 units flowing out.</p>
+    <a href="https://ibb.co/5517MNv"><img src="https://i.ibb.co/JzchBf2/img13.png" alt="img13" border="0"></a>
+    <p>🚨 We have a problem again! The flow of this edge (4) can not be greater than the edge's capacity (3).</p>
+    <a href="https://ibb.co/CJ7w54z"><img src="https://i.ibb.co/YDkN7J3/img14.png" alt="img14" border="0"></a>
+    <p>There is one edge flowing out of vertex d, and it has a capacity of 3, so let's put the maximum number of units
+        along that edge, 3.</p>
+    <a href="https://ibb.co/XWF1xzx"><img src="https://i.ibb.co/WHBZvcv/img15.png" alt="img15" border="0"></a>
+    <p>3 units are flowing out of vertex d, so only 3 units can flow into it. Let's leave the 1 unit flowing from vertex
+        c to d. That means we can only have 2 units flowing from vertex b to d.</p>
+    <a href="https://ibb.co/Q80s489"><img src="https://i.ibb.co/Gsmgqs7/img16.png" alt="img16" border="0"></a>
+    <p>Since 2 units flow out of vertex b, only 2 units can flow into it.</p>
+    <a href="https://ibb.co/P6Ws3Kv"><img src="https://i.ibb.co/BC6Hdb5/img17.png" alt="img17" border="0"></a>
+    <p>It looks like our network is complete! It has a <b>flow of 5</b>, since a total of 5 units enter the network from
+        the source (s), and exit the network through the sink (t).</p>
+
+
+    <h2>How do we know this is the maximum flow?</h2>
+    <p>We don't, at least not yet. A flow of 5 looks pretty efficient for our network, but how do we know it is the most
+        efficient? Again, our theorem states that the maximum value of an s-t flow is equal to the minimum capacity over
+        all s-t cuts. So, if we find a cut that is equal to 5, then we know 5 is the maximum flow of our network.</p>
+
+    <h2>But what is a cut??</h2>
+    <ul>
+        <li>Cut - a partition (sometimes noted by a line/bubble) that completely separates s from t. There should be no
+            path for units to flow from s to t.</li>
+        <li>Capacity (of a cut) - <b>sum of the capacities</b> of the edges that cross the cut. Add up the capacities of
+            the edges that point to a vertex outside the cut.</li>
+        <li>Minimum Cut - a cut with the smallest capacity</li>
+    </ul>
+
+    <h2>Finding the minimum cut</h2>
+    <p>We can use trial and error to try out different cuts and find their capacities. This cut has a <b>capacity of
+            12</b>. We got this by adding the capacities of the edges crossing the cut (3 + 9 = 12).</p>
+    <a href="https://ibb.co/7pt7sqg"><img src="https://i.ibb.co/ykFLHrh/cut0.png" alt="cut0" border="0"></a>
+    <p>This cut has a <b>capacity of 6</b>. Even though the cut crosses 3 edges, we only add up the underlined
+        capacities. 3 units along the s-a edge + 3 units along the b-d edge = 6 units. We don't include the 2 units
+        along the a-b edge, since that edge points to vertex b, which is inside the cut.</p>
+    <a href="https://ibb.co/cXkRpyD"><img src="https://i.ibb.co/mFbdYR6/cut1.png" alt="cut1" border="0"></a>
+    <p>Let's try one more cut. This cut crosses the c-t edge and the d-t edge. When we add up their capacities, 2 + 3 =
+        a cut <b>capacity of 5</b>.</p>
+
+    <a href="https://ibb.co/wLpt3rg"><img src="https://i.ibb.co/vBL9gvq/cut2.png" alt="cut2" border="0"></a>
+
+    <h2>Conclusion</h2>
+    <p>We filled our network with units and got a capacity of 5. We also found a cut that has a capacity of 5. Since 5 =
+        5, we have found the maximum-flow and minimum-cut of this network!</p>
+
+    <h2>History</h2>
+    <ul>
+        <li>1955 map of rail networks from the Soviet Union to Eastern Europe</li>
+
+        <a href="https://ibb.co/1RDQR0w"><img src="https://i.ibb.co/3SDdSTL/map.png" alt="map" border="0"></a>
+        <li>US wanted to cut off routes from suppliers in Russia to Eastern Europe as efficiently as possible</li>
+        <li>Lester Ford and Delbert Fulkerson at the Research and Development (RAND) corporation made an algorithm which
+            finds the optimal s-t cut</li>
+    </ul>
+
+    <h2>Uses of the Theorem</h2>
+    <ul>
+        <li>In computing it is used in network reliability, connectivity, etc. </li>
+        <li>In mathematics is used to do bipartite matching.</li>
+        <li>In other less technical areas, it can be used for image processing, airline scheduling, baseball
+            elimination, and many more topics, each worth their own TED Talk.</li>
+    </ul>
+
+    <h2>Bonus Problems</h2>
+    <p>Will be added soon.</p>
+
+</body>
+
+</html>
