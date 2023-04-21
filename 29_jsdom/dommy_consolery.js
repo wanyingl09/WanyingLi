@@ -1,7 +1,8 @@
 // Team Cereal Killers :: Selena Ho, Wanying Li
+//worked with Buffalo x3
 // SoftDev pd8
-// K28 -- Getting more comfortable with the dev console and the DOM
-// 2023-04-17
+// K29 -- Getting more comfortable with the dev console and the DOM
+// 2023-04-20
 // --------------------------------------------------
 
 
@@ -77,22 +78,11 @@ var stripe = function() {
 
 //stripe()
 
-var dasbut = document.getElementById("a"); 
-dasbut.addEventListener('click', ()=>{
-	addItem(fib(20));
-});
-var dasbut = document.getElementById("b"); 
-dasbut.addEventListener('click', ()=>{
-	addItem(fact(7));
-});
-var dasbut = document.getElementById("c"); 
-dasbut.addEventListener('click', ()=>{
-	addItem(GCD(10, 15));
-});
+
 
 //insert your implementations here for...
 // FIB
-function fib(n) {
+var fib = function(n) {
   if (n < 2) {
       return n;
   }
@@ -100,7 +90,7 @@ function fib(n) {
 };
 
 // FAC
-function fact(n) {
+var fact = function(n) {
   if (n < 2) {
       return 1;
   }
@@ -114,9 +104,23 @@ var GCD = (a, b) => {
   return GCD(b, a%b);
 };
 
-addItem(fib(9) + " should be 34")
-addItem(fact(9) + " should be 362880")
-addItem(GCD(9, 15) + " should be 3")
+var dasbut = document.getElementById("a"); 
+dasbut.addEventListener('click', ()=>{
+	addItem(fib(20));
+});
+var dasbut = document.getElementById("b"); 
+dasbut.addEventListener('click', ()=>{
+	addItem(fact(7));
+});
+var dasbut = document.getElementById("c");
+dasbut.addEventListener('click', () => {
+    addItem(GCD(10,15));
+});
+//no predeclared functions in the second argument otherwise will run before button is clicked and not run when button is clicked
+
+//addItem(fib(9) + " should be 34")
+//addItem(fact(9) + " should be 362880")
+//addItem(GCD(9, 15) + " should be 3")
 // In addition to the style shown above,
 //  you are encouraged to test drive the "arrow function syntax" as shown below.
 //  Note anything notable.
