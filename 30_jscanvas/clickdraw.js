@@ -50,6 +50,7 @@ var drawCircle = (e) => {
     //ctx.arc() on its own doesn't display anything
     ctx.fill();
     ctx.stroke();
+    // closePath() not needed??
 };
 
 var draw = (e) => {
