@@ -29,8 +29,8 @@ var dvdLogoSetup = function() {
     var rectX = Math.floor(Math.random() * (c.width - rectWidth));
     var rectY = Math.floor(Math.random(c.height - rectHeight));
     
-    var xVel = 3;
-    var yVel = 3;
+    var xVel = 4;
+    var yVel = 4;
 
     var logo = new Image();
     logo.src = "logo_dvd.jpg";
@@ -38,14 +38,14 @@ var dvdLogoSetup = function() {
     var dvdLogo = function() {
         ctx.clearRect(0, 0, c.width, c.height); 
         ctx.drawImage(logo, rectX, rectY, rectWidth, rectHeight);
-        console.log(rectX, rectY);
-        console.log(c.height - rectHeight);
-        console.log("....");
-        if (rectX <= 0 || rectX >= c.width - rectWidth) {
+        //console.log(rectX, rectY);
+        //console.log(c.height - rectHeight);
+        //console.log("....");
+        if (rectX < 0 || rectX > c.width - rectWidth) {
             xVel = -xVel;
         }
-        if (rectY <= 0 || rectY >= c.height - rectHeight) {
-            yvel = -yVel;
+        if (rectY < 0 || rectY > c.height - rectHeight) {
+            yVel = -yVel;
         }
         rectX = rectX + xVel;
         rectY = rectY + yVel;
