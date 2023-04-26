@@ -1,0 +1,5 @@
+    Image()
+    IMAGE_OBJ.src
+    CANVAS_CONTEXT.drawImage()
+    Math.random()
+    Math.floor() ...
